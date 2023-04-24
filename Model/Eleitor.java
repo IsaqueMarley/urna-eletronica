@@ -37,4 +37,18 @@ public class Eleitor extends Pessoa{
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public Eleitor(String rg, String cpf, String cep, String senha) {
+        this.rg = rg;
+        this.cpf = cpf;
+        this.cep = cep;
+        this.senha = senha;
+    }
+
+    public Eleitor(String id, String senha) {
+        this.id = id;
+        this.senha = senha;
+    }
+
+
 }
