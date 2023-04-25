@@ -6,6 +6,7 @@ import javax.swing.*;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import java.awt.*;
 
 
 public class Login extends javax.swing.JFrame {
@@ -14,6 +15,17 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         controller = new LoginController(this);
         Banco.inicia();
+        this.setTitle("Tela de Login");
+        this.setSize(400,200);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+        this.setLayout(new GridLayout(7,1));
+
+        this.setVisible(true);
+
+
     }
 
     private void initComponents() {
