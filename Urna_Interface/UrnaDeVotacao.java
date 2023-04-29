@@ -9,22 +9,21 @@ public class UrnaDeVotacao extends JFrame implements ActionListener {
    private  String[] atores = {"Javier Bardem", "Benedict Cumberbatch", "Andrew Garfield", "Will Smith", "Denzel Washington"};
     
     // Definindo os componentes da interface
-    JLabel labelTitulo = new JLabel("Urna de Votação");
-    JLabel labelInstrucoes = new JLabel("Selecione o ator que você deseja votar:");
-    JRadioButton[] radioAtores = new JRadioButton[atores.length]; // 
-    JButton botaoVotar = new JButton("Votar");
-    //JLabel labelResultado = new JLabel("");
+    private JLabel labelTitulo = new JLabel("Urna de Votação");
+    private JLabel labelInstrucoes = new JLabel("Selecione o ator que você deseja votar:");
+    private JRadioButton[] radioAtores = new JRadioButton[atores.length]; // 
+    private JButton botaoVotar = new JButton("Votar");
     
     // Construtor da classe
     public UrnaDeVotacao() {
         // Definindo as configurações da janela
-        setTitle("Urna de Votação");
-        setSize(400, 200);
-        setLocationRelativeTo(null); // localizacao relativa = NULL :  para aparecer no centro da tela
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // encerrar programa ao fechar
+        this.setTitle("Urna de Votação");
+        this.setSize(400, 200);
+        this.setLocationRelativeTo(null); // localizacao relativa = NULL :  para aparecer no centro da tela
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // encerrar programa ao fechar
         
         // Definindo o layout da interface
-        setLayout(new GridLayout(7, 1));
+        this.setLayout(new GridLayout(7, 1));
         
         // Adicionando os componentes à janela
         add(labelTitulo); // adicionando o titulo
@@ -43,7 +42,7 @@ public class UrnaDeVotacao extends JFrame implements ActionListener {
                                                , que no caso seria abrir uma janela de confirmacao*/
         
         // Exibindo a janela
-        setVisible(true);
+        this.setVisible(true);
     }
     
     // Método que é chamado quando o botão de votar é clicado
