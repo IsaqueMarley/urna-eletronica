@@ -22,10 +22,10 @@ public class EleitorDAO {
     }
 
     // Deleta um objeto do banco de dados pelo id do usuario passado
-    public boolean delete(Eleitor usuario){
-        for (Eleitor usuarioLista : Banco.eleitorList) {
-            if(idSaoIguais(usuarioLista,usuario)){
-                Banco.eleitorList.remove(usuarioLista);
+    public boolean delete(Eleitor eleitor){
+        for (Eleitor eleitorLista : Banco.eleitorList) {
+            if(idSaoIguais( eleitorLista,eleitor)){
+                Banco.eleitorList.remove( eleitorLista);
                 return true;
             }
         }
@@ -56,22 +56,22 @@ public class EleitorDAO {
 
     /**
      * Recebe dois objetos e verifica se são iguais verificando o nome e senha
-     * @param usuario
-     * @param usuarioAPesquisar
+     * @param
+     * @param
      * @return verdadeiro caso sejam iguais e falso caso nao forem iguais
      */
-    private boolean nomeESenhaSaoIguais(Eleitor usuario, Eleitor usuarioAPesquisar) {
-        return usuario.getNome().equals(usuarioAPesquisar.getNome()) && usuario.getSenha().equals(usuarioAPesquisar.getSenha());
+    private boolean nomeESenhaSaoIguais(Eleitor eleitor, Eleitor eleitorAPesquisar) {
+        return eleitor.getId().equals(eleitorAPesquisar.getId()) && eleitor.getSenha().equals(eleitorAPesquisar.getSenha());
     }
 
     /**
      * Compara se dois objetos tem a propriedade id igual
-     * @param usuario
-     * @param usuarioAComparar
+     * @param
+     * @param
      * @return verdadeiro caso os id forem iguais e falso se nao forem
      */
-    private boolean idSaoIguais(Eleitor usuario, Eleitor usuarioAComparar) {
-        return usuario.getId() ==  usuarioAComparar.getId();
+    private boolean idSaoIguais(Eleitor eleitor, Eleitor eleitorAComparar) {
+        return eleitor.getId() ==  eleitorAComparar.getId();
     }
 
     public Eleitor selectPorIDeSenha() {

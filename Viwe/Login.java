@@ -7,12 +7,24 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame implements ActionListener {
     private final LoginController controller;
+
+    private JPanel panel1 = new JPanel();
+    private JLabel id = new JLabel("Informe o ID");
+
+    private JTextField textUsuario = new JTextField();
+    private JLabel senha = new JLabel("Senha");
+
+    private JPasswordField textSenha = new JPasswordField();
+    private JButton entrar = new JButton("Entrar");
+
+
     public Login(){
-        initComponents();
         controller = new LoginController(this);
         Banco.inicia();
         this.setTitle("Tela de Login");
@@ -23,33 +35,22 @@ public class Login extends javax.swing.JFrame {
 
         this.setLayout(new GridLayout(7,1));
 
+        add(panel1);
+        add(id);
+        add(textUsuario);
+        add(senha);
+        add(textSenha);
+        add(entrar);
+
+        entrar.addActionListener(this);
+
         this.setVisible(true);
 
 
     }
 
-    private void initComponents() {
-        Entrar = new javax.swing.JButton();
-        TextUsuario = new javax.swing.JTextField();
-        TextSenha = new javax.swing.JPasswordField();
-    }
-
-
-
-    private JPanel panel1;
-    private JTextField TextUsuario;
-    private JPasswordField TextSenha;
-    private JButton Entrar;
-
-    private void TextUsuarioActionPerformed(java.awt.event.ActionEvent evt) {
-    }
-
-    private void TextSenhaActionPerformed(java.awt.event.ActionEvent evt){
-
-    }
-
-    private void ButtonEntrarActionPerformed(java.awt.event.ActionEvent evt){
-        //Executa quando clico no botão
+    @Override
+    public void actionPerformed(ActionEvent e) {
         this.controller.entrarNoSistema();
     }
 
@@ -59,18 +60,20 @@ public class Login extends javax.swing.JFrame {
     }
 
     public JTextField getTextUsuario() {
-        return TextUsuario;
+        return textUsuario;
     }
 
     public void setTextUsuario(JTextField textUsuario) {
-        TextUsuario = textUsuario;
+        textUsuario = textUsuario;
     }
 
     public JPasswordField getTextSenha() {
-        return TextSenha;
+        return textSenha;
     }
 
     public void setTextSenha(JPasswordField textSenha) {
-        TextSenha = textSenha;
+        textSenha = textSenha;
     }
+
+
 }
