@@ -47,7 +47,7 @@ public class EleitorDAO {
      */
     public Eleitor selectPorIDeSenha(Eleitor eleitor){
         for (Eleitor eleitorLista : Banco.eleitorList) {
-            if(nomeESenhaSaoIguais(eleitorLista,eleitor)){
+            if(idESenhaSaoIguais(eleitorLista,eleitor)){
                 return eleitorLista;
             }
         }
@@ -60,7 +60,7 @@ public class EleitorDAO {
      * @param
      * @return verdadeiro caso sejam iguais e falso caso nao forem iguais
      */
-    private boolean nomeESenhaSaoIguais(Eleitor eleitor, Eleitor eleitorAPesquisar) {
+    private boolean idESenhaSaoIguais(Eleitor eleitor, Eleitor eleitorAPesquisar) {
         return eleitor.getId().equals(eleitorAPesquisar.getId()) && eleitor.getSenha().equals(eleitorAPesquisar.getSenha());
     }
 

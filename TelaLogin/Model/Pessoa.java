@@ -1,9 +1,12 @@
 package Model;
 
 abstract public class Pessoa {
+
+    //declarando atributos
     protected String id;
     protected String nome;
 
+    //metos get e set
     public String getId() {
         return id;
     }

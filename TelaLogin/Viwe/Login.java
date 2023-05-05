@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
 public class Login extends javax.swing.JFrame implements ActionListener {
     private final LoginController controller;
 
+
+    //Definindo componentes
     private JPanel panel1 = new JPanel();
     private JLabel id = new JLabel("Informe o ID");
 
@@ -23,8 +25,10 @@ public class Login extends javax.swing.JFrame implements ActionListener {
     private JPasswordField textSenha = new JPasswordField();
     private JButton entrar = new JButton("Entrar");
 
-
+    //construtor da classe Login
     public Login(){
+
+        //Definindo as configurações da view
         controller = new LoginController(this);
         Banco.inicia();
         this.setTitle("Tela de Login");
@@ -35,6 +39,7 @@ public class Login extends javax.swing.JFrame implements ActionListener {
 
         this.setLayout(new GridLayout(7,1));
 
+        //adicionando os componentes
         add(panel1);
         add(id);
         add(textUsuario);
@@ -42,23 +47,30 @@ public class Login extends javax.swing.JFrame implements ActionListener {
         add(textSenha);
         add(entrar);
 
+
+        //adicinando uma ação ao botão entrar
         entrar.addActionListener(this);
 
+
+        //tornando a tela visivel
         this.setVisible(true);
 
 
     }
 
+    //metodo que executa a ação do botão entrar
     @Override
     public void actionPerformed(ActionEvent e) {
         this.controller.entrarNoSistema();
     }
 
-
+    //metodo que exibe uma mensagem na tela
     public void exibeMensagem(String mensagem) {
         JOptionPane.showMessageDialog(null,mensagem);
     }
 
+
+    //metodos get e set
     public JTextField getTextUsuario() {
         return textUsuario;
     }

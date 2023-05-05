@@ -1,11 +1,14 @@
 package Model;
 
 public class Eleitor extends Pessoa{
+
+    //definindo atributos
     private String rg;
     private String cpf;
     private String cep;
     private String senha;
 
+    //metodos get e set
     public String getRg() {
         return rg;
     }
@@ -38,6 +41,7 @@ public class Eleitor extends Pessoa{
         this.senha = senha;
     }
 
+    //construtores
     public Eleitor(String rg, String cpf, String cep, String senha) {
         this.rg = rg;
         this.cpf = cpf;

@@ -13,6 +13,7 @@ public class LoginController {
     }
 
     public void entrarNoSistema(){
+
         //pegar um Eleitor da View
         Eleitor eleitor = helper.obterModelo();
 
@@ -20,17 +21,11 @@ public class LoginController {
         EleitorDAO eleitorDAO = new EleitorDAO();
         Eleitor eleitorAutenticado = eleitorDAO.selectPorIDeSenha(eleitor);
 
-        //se usuario va view estiver no banco, redirecinar para pagina principal
+        //se usuario da view estiver no banco, redirecina para pagina principal, senão exibe mensagem de erro
         if (eleitorAutenticado != null){
             view.exibeMensagem("Direcionando para o menu principal");
         }else{
-            view.exibeMensagem("Usuario ou senha invalidos");
+            view.exibeMensagem("ID ou senha invalidos");
         }
-    }
-
-
-    public void fizTarefa(){
-        System.out.println("Busquei algo do banco de dados");
-        this.view.exibeMensagem("Executei o fiz tarefa");
     }
 }

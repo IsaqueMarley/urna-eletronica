@@ -2,6 +2,7 @@ package Model.DAO;
 import Model.Eleitor;
 import java.util.ArrayList;
 public class Banco {
+    //criando um arrayList
     public static ArrayList<Eleitor> eleitorList;
 
 

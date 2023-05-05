@@ -10,6 +10,7 @@ public class LoginHelper {
         this.view = view;
     }
 
+    //transfromas os campos de id e senaha da view em um modelo
     public Eleitor obterModelo() {
         String id = view.getTextUsuario().getText();
         String senha = view.getTextSenha().getText();
@@ -17,6 +18,7 @@ public class LoginHelper {
         return modelo;
     }
 
+    //seta um modelo na view
     public void setarModelo(Eleitor modelo){
         String id = modelo.getId();
         String senha = modelo.getSenha();
@@ -25,6 +27,7 @@ public class LoginHelper {
         view.getTextSenha().setText(senha);
     }
 
+    //Limpa os campos da view
     public void limpar(){
         view.getTextUsuario().setText("");
         view.getTextSenha().setText("");
