@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 
 
 public class Login extends javax.swing.JFrame implements ActionListener {
+
     private final LoginController controller;
 
 
@@ -24,6 +25,7 @@ public class Login extends javax.swing.JFrame implements ActionListener {
 
     private JPasswordField textSenha = new JPasswordField();
     private JButton entrar = new JButton("Entrar");
+    private JButton finalizar = new JButton("Finalizar Votação");
 
     //construtor da classe Login
     public Login(){
@@ -46,16 +48,22 @@ public class Login extends javax.swing.JFrame implements ActionListener {
         add(senha);
         add(textSenha);
         add(entrar);
+        add(finalizar);
 
 
-        //adicinando uma ação ao botão entrar
+        //adicinando uma ação ao botão entrar e finalizar
         entrar.addActionListener(this);
+        finalizar.addActionListener(this);
 
 
         //tornando a tela visivel
         this.setVisible(true);
 
 
+    }
+
+    public void finalizarVot(ActionEvent f){
+        
     }
 
     //metodo que executa a ação do botão entrar

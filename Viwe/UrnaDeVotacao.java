@@ -85,6 +85,8 @@ public class UrnaDeVotacao extends JFrame implements ActionListener {
         }
 
         // Finalizando o programa após o usuário votar
+        Login login = new Login();
+        login.setVisible(true);
         dispose(); // funcao da awt que libera os recursos usados nessa janela
     }
 
