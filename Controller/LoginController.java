@@ -13,6 +13,7 @@ public class LoginController {
         this.view = view;
         this.helper = new LoginHelper (view);
     }
+    
 
     public void entrarNoSistema(){
 

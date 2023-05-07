@@ -62,14 +62,20 @@ public class Login extends javax.swing.JFrame implements ActionListener {
 
     }
 
-    public void finalizarVot(ActionEvent f){
-        
-    }
+
 
     //metodo que executa a ação do botão entrar
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.controller.entrarNoSistema();
+
+        if (e.getActionCommand().equals("Entrar")){
+            this.controller.entrarNoSistema();
+
+        }
+        if(e.getActionCommand().equals("Finalizar Votação")){
+            dispose();
+            System.exit(0);
+        }
     }
 
     //metodo que exibe uma mensagem na tela
