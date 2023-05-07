@@ -1,57 +1,114 @@
 import java.io.*;
 import java.util.*;
+import java.security.*;
+import java.util.List;
 
 public class ContarVotos {
     
     public static void main(String[] args) {
 
-        // cria um hashmap com nome do ator e numeros de votos
-        HashMap<String, Integer> votos = new HashMap<String, Integer>();
-        System.out.println(votos);
-        try {
-           //eh um classe em Java lê o texto de um fluxo de entrada de caracteres,
-           //armazenando caracteres em buffer para fornecer uma leitura eficiente
-            BufferedReader leitor = new BufferedReader(new FileReader("votos.txt"));
-            String linha;
-            while ((linha = leitor.readLine()) != null) {
 
+        HashMap<String, Integer> votos = new HashMap<String, Integer>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("votos.txt"));
+            String linha;
+            while ((linha = reader.readLine()) != null) {
                 if (votos.containsKey(linha)) {
-                    
                     votos.put(linha, votos.get(linha) + 1);
                 } else {
                     votos.put(linha, 1);
                 }
             }
-            leitor.close();
-            System.out.println("AQUIIII: "+votos);
-
-        }catch (FileNotFoundException ex) { //se o arquivo não for criado 
-            System.out.println("Não há votos");
-        } catch (IOException ex ) { // exibir no console qual erro seria
-            ex.printStackTrace();
+            reader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Arquivo não foi encontrado! :(");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         
-        
-        // Encontrando o ator mais votado
-        String atorMaisVotado = "";
-        int votosDoAtorMaisVotado = 0;
-        System.out.println("votos"+ votos.keySet());
 
-        for (String ator : votos.keySet()) { //keySet retorna as chaves do hashmap que no caso sao os atores
-            int numVotos = votos.get(ator); // numVotos recebe o ator
-            System.out.println("ator: "+ator);
-            System.out.println(numVotos);
+
+        if (votos.isEmpty()) {
+            System.out.println("Não há votos");
+            return;
+        }
+        
+
+
+        List<String> atoresMaisVotados = new ArrayList<String>();
+        int votosDoAtorMaisVotado = 0;
+        for (String ator : votos.keySet()) {
+            int numVotos = votos.get(ator);
             if (numVotos > votosDoAtorMaisVotado) {
-                atorMaisVotado = ator;
+                atoresMaisVotados.clear();
+                atoresMaisVotados.add(ator);
                 votosDoAtorMaisVotado = numVotos;
+            } else if (numVotos == votosDoAtorMaisVotado) {
+                atoresMaisVotados.add(ator);
             }
         }
         
-         /*
-         //criar uma verificao se com isEmpty pra ver se o arquivo esta vazio
-            ou com ... se ele existe
-         */
+
+
+        if (atoresMaisVotados.size() == 1) {
+            String atorMaisVotado = atoresMaisVotados.get(0);
+            System.out.println(atorMaisVotado + " VENCEU com " + votosDoAtorMaisVotado + " votos!");
+        } else {
+            System.out.println("Ocorreu um empate entre os atores:");
+            for (String ator : atoresMaisVotados) {
+                System.out.println("- " + ator);
+            }
+        }
+
+
+
+
+            // Ler o arquivo e armazenar seu conteúdo em um byte array
+            byte[] arquivo = null;
+            try {
+                FileInputStream inputStream = new FileInputStream("votos.txt");
+                arquivo = new byte[inputStream.available()];
+                inputStream.read(arquivo);
+                inputStream.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("Arquivo não foi encontrado! :(");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         
-        System.out.println(atorMaisVotado + " VENCEU com " + votosDoAtorMaisVotado + " votos!");
+            // Gerar o hash do arquivo
+            String hash = null;
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA-256");
+                byte[] digest = md.digest(arquivo);
+                hash = bytesToHex(digest); // Converte o array de bytes em uma string hexadecimal
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+        
+            System.out.println("Hash do arquivo votos.txt: " + hash);
+        
+            // Comparar o hash com o hash criado na classe Login
+            String hashLogin = hash;
+            if (hash.equals(hashLogin)) {
+                System.out.println("Os hashes são iguais!");
+            } else {
+                System.out.println("Os hashes são diferentes :(");
+            }
+        }
+        
+        // Método para converter um array de bytes em uma string hexadecimal
+        private static String bytesToHex(byte[] bytes) {
+            StringBuilder result = new StringBuilder();
+            for (byte b : bytes) {
+                result.append(String.format("%02x", b));
+            }
+            return result.toString();
+        
+        
+
+
+
+
     }
 }
