@@ -1,5 +1,6 @@
 package Controller;
 import Controller.Helper.LoginHelper;
+import Model.DAO.Banco;
 import Model.DAO.EleitorDAO;
 import Model.Eleitor;
 import Viwe.Login;
@@ -13,7 +14,6 @@ public class LoginController {
         this.view = view;
         this.helper = new LoginHelper (view);
     }
-    
 
     public void entrarNoSistema(){
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class EleitorDAO {
     // Insere um usuario dentro do banco de dado
-    public void insert(Eleitor eleitor){
+    public static void insert(Eleitor eleitor){
         Banco.eleitorList.add(eleitor);
     }
 
@@ -45,6 +45,7 @@ public class EleitorDAO {
      * @param
      * @return Usuario encontrado no banco de dados
      */
+
     public Eleitor selectPorIDeSenha(Eleitor eleitor){
         for (Eleitor eleitorLista : Banco.eleitorList) {
             if(idESenhaSaoIguais(eleitorLista,eleitor)){

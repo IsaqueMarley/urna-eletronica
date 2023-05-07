@@ -1,3 +1,5 @@
+package Controller;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,7 +8,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class HashGenerator {
-    public static String HashStr(String text) throws NoSuchAlgorithmException {
+    public static String hashStr(String text) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] hashBytes = digest.digest(text.getBytes());
         StringBuilder hexString = new StringBuilder();
