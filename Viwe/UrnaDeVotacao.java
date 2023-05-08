@@ -33,7 +33,7 @@ public class UrnaDeVotacao extends JFrame implements ActionListener {
         this.setTitle("Urna de Votação");
         this.setSize(400, 200);
         this.setLocationRelativeTo(null); // localizacao relativa = NULL :  para aparecer no centro da tela
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // encerrar programa ao fechar
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // encerrar programa ao fechar
 
         // Definindo o layout da interface
         this.setLayout(new GridLayout(7, 1));

@@ -42,7 +42,7 @@ public class Login extends javax.swing.JFrame implements ActionListener {
         this.setTitle("Tela de Login");
         this.setSize(400,200);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
 
         this.setLayout(new GridLayout(7,1));
