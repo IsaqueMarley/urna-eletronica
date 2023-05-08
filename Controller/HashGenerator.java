@@ -22,7 +22,7 @@ public class HashGenerator {
         return hexString.toString();
     }
 
-    public static String HashFile(File file) throws NoSuchAlgorithmException, IOException {
+    public static String hashFile(File file) throws NoSuchAlgorithmException, IOException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         try (DigestInputStream inputStream = new DigestInputStream(new FileInputStream(file), digest)) {
             // Lê o arquivo para calcular a hash

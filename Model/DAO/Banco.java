@@ -1,12 +1,10 @@
 package Model.DAO;
 import Model.Eleitor;
 import Controller.HashGenerator;
-import Viwe.Login;
 
 import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Banco {
     //criando um arrayList
@@ -39,6 +37,24 @@ public class Banco {
             throw new RuntimeException(e);
         }
 
+        try {
+            File file = new File("eleitor.txt");
+            String hash = HashGenerator.hashFile(file);
+            System.out.println("Hash SHA256 do arquivo: " + hash);
+
+            String HashEsperado = "5f8726e82ae10144e8ce31fcc15a9bc51d46f3a4660bea794e92ebc2a2a973ca";
+
+            if(hash.equals(HashEsperado)){
+                System.out.println("Hash Valido");
+            }else{
+                System.out.println("Hash Invalido");
+            }
+
+        } catch (NoSuchAlgorithmException | IOException e) {
+            System.err.println("Erro ao gerar hash: " + e.getMessage());
+        }
+
 
     }
+
 }

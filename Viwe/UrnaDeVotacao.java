@@ -5,8 +5,18 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
 
-public class UrnaDeVotacao extends JFrame implements ActionListener {
+import Controller.Helper.LoginHelper;
 
+public class UrnaDeVotacao extends JFrame implements ActionListener {
+    private Login view;
+    private LoginHelper helper;
+  // private final LoginController controller; 
+  // private final LoginHelper helper;
+
+   //public LoginHelper(Login view){
+	//this.view = view;	
+  // }
+	
     // Definindo os atores
     private  String[] atores = {"Javier Bardem", "Benedict Cumberbatch", "Andrew Garfield", "Will Smith", "Denzel Washington"};
 
@@ -18,6 +28,7 @@ public class UrnaDeVotacao extends JFrame implements ActionListener {
 
     // Construtor da classe
     public UrnaDeVotacao() {
+
         // Definindo as configurações da janela
         this.setTitle("Urna de Votação");
         this.setSize(400, 200);
@@ -43,6 +54,8 @@ public class UrnaDeVotacao extends JFrame implements ActionListener {
         botaoVotar.addActionListener(this); /* eh um evento de acao que ocorre ao clicar em votar
                                                , que no caso seria abrir uma janela de confirmacao*/
 
+
+        
         // Exibindo a janela
         this.setVisible(true);
     }
@@ -79,13 +92,14 @@ public class UrnaDeVotacao extends JFrame implements ActionListener {
                 FileWriter arquivo = new FileWriter("votos.txt", true);
                 arquivo.write(atorSelecionado + "\n");
                 arquivo.close();
+
             } catch (IOException ex) {
                 ex.printStackTrace(); // escrever no console qual foi o erro
             }
-	if (opcao == JOptionPane.YES_OPTION) {
+
     		// mensagem de votação finalizada
    	 	JOptionPane.showMessageDialog(this, "Votação finalizada");
-    	     }
+    	   //  }/
 
         }
 	    

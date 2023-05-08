@@ -1,5 +1,6 @@
 package Viwe;
 
+import Controller.ContV;
 import Controller.Helper.LoginHelper;
 import Controller.LoginController;
 import Model.DAO.Banco;
@@ -13,18 +14,6 @@ import javax.swing.JTextField;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
-import java.util.List;
-import java.io.*;
-import java.security.*;
-import java.security.MessageDigest;
-import java.io.File;
-//import javax.xml.bind.DatatypeConverter;
-
-
-
-
 public class Login extends javax.swing.JFrame implements ActionListener {
     private final LoginController controller;
 
@@ -39,10 +28,12 @@ public class Login extends javax.swing.JFrame implements ActionListener {
     private JButton entrar = new JButton("Entrar");
     private JButton finalizar = new JButton("Finalizar Votação");
     private LoginHelper helper;
+    private ContV contV;
 
     //construtor da classe Login
     public Login(){
 
+        this.contV = new ContV();
         this.helper = new LoginHelper (this);
 
         //Definindo as configurações da view
@@ -84,57 +75,10 @@ public class Login extends javax.swing.JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getActionCommand().equals("Entrar")){
-
-            Eleitor eleitor = helper.obterModelo();
-            EleitorDAO eleitorDAO = new EleitorDAO();
-            Eleitor eleitorAutenticado = eleitorDAO.selectPorIDeSenha(eleitor);
-            if (eleitorAutenticado == null){
-                exibeMensagem("O eleitor já fez uso do voto");
-            }else{
-                this.controller.entrarNoSistema();
-            }
-
-
+            this.controller.entrarNoSistema();
         }
-        
-
         if(e.getActionCommand().equals("Finalizar Votação")){
-            try {
-                // Gerar o hash do arquivo de votos
-                FileInputStream fis = new FileInputStream("votos.txt");
-                MessageDigest digest = MessageDigest.getInstance("SHA-256");
-                byte[] buffer = new byte[8192];
-                int read = 0;
-                while ((read = fis.read(buffer)) > 0) {
-                    digest.update(buffer, 0, read);
-                }
-                byte[] hashBytes = digest.digest();
-                fis.close();
-                
-                // Converter o hash em uma string hexadecimal
-                StringBuilder hexString = new StringBuilder();
-                for (byte b : hashBytes) {
-                    String hex = Integer.toHexString(0xff & b);
-                    if (hex.length() == 1) hexString.append('0');
-                    hexString.append(hex);
-                }
-                String hashDeLogin = hexString.toString();
-                
-                // Escrever o hash no console
-                System.out.println("Hash SHA256 do arquivo de votos: " + hashDeLogin);
-                
-                // Encerrar o programa
-                dispose();
-                System.exit(0);
-            } catch (IOException | NoSuchAlgorithmException e1) {
-                e1.printStackTrace();
-            }
-        }
-        
-
-
-        if(e.getActionCommand().equals("Finalizar Votação")){
-
+            this.contV.contarVotos();
             dispose();
             System.exit(0);
         }

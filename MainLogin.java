@@ -5,7 +5,6 @@ import java.io.IOException;
 
 public class MainLogin {
     public static void main(String[]args){
-
         //Limpa o arquivo de votos
         try {
             FileWriter arquivo = new FileWriter("votos.txt", false);
@@ -14,17 +13,6 @@ public class MainLogin {
         } catch (IOException ex) {
             ex.printStackTrace(); // escrever no console qual foi o erro
         }
-        //limpar o arquivo de de IDs de Eleitores
-        try {
-            FileWriter arquivo = new FileWriter("Eleitores.txt", false);
-            arquivo.write(  "\n");
-            arquivo.close();
-        } catch (IOException ex) {
-            ex.printStackTrace(); // escrever no console qual foi o erro
-        }
-
-
-
         new Login();
     }
 }
