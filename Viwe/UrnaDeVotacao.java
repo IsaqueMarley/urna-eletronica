@@ -82,12 +82,13 @@ public class UrnaDeVotacao extends JFrame implements ActionListener {
             } catch (IOException ex) {
                 ex.printStackTrace(); // escrever no console qual foi o erro
             }
-
-        }
-	    if (opcao == JOptionPane.YES_OPTION) {
+	if (opcao == JOptionPane.YES_OPTION) {
     		// mensagem de votação finalizada
    	 	JOptionPane.showMessageDialog(this, "Votação finalizada");
     	     }
+
+        }
+	    
 
         // Finalizando o programa após o usuário votar
         Login login = new Login();
