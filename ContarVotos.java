@@ -19,7 +19,7 @@ public class ContarVotos {
             }
             reader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Não há votos");
+            System.out.println("Arquivo não foi encontrado! :(");
         } catch (IOException e) {
             e.printStackTrace();
         }
